@@ -11,6 +11,7 @@ export class App{
     constructor(){
         this.express = express();
         this.listen();
+        this.database();
     }
 
     public getApp():express.Application {
@@ -21,5 +22,9 @@ export class App{
         this.express.listen(this.porta, ()=>{
             console.log(`Servidor iniciado na porta ${this.porta}`);
         });
+    }
+
+    private database():void {
+        mongoose.connect('mongodb+srv://hugo:hghavoc@cluster0.v1dmbxt.mongodb.net/?retryWrites=true&w=majority')
     }
 }
